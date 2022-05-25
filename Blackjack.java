@@ -85,14 +85,14 @@ public class Blackjack
         String perg="";
         j3=0;
         do{
-            System.out.println("Quer outra carta?(s/n)");
-            perg = in.nextLine(); 
-            if(perg.equals("s") || perg.equals("S")){
+            if(j1+j2+j3<21){
+                System.out.println("Quer outra carta?(s/n)");
+                perg = in.nextLine(); 
+                if(perg.equals("s") || perg.equals("S"))
                 j3= j3 + gerarCarta(r,j1,j2,j3);
-
             }
             System.out.printf("Total  : %d%n", j1 + j2 + j3);
-        }while(perg.equals("s") || perg.equals("S"));
+        }while((perg.equals("s") || perg.equals("S")) && (j1+j2+j3<21));
         in.close();
         return j3;
     }
@@ -138,7 +138,7 @@ public class Blackjack
                     aposta=in.nextDouble();
                 }
             }
-            else if(dinheiro-aposta>=0 && aposta>0){
+            if(dinheiro-aposta>=0 && aposta>0){
                 System.out.printf("\f%n");
                 System.out.printf("COMPUTADOR%n");        
                 c1 = gerarCarta(r,c1,c2,c3);
@@ -168,14 +168,19 @@ public class Blackjack
                 System.out.println("-----------------------");
 
                 if(j1+j2+j3 > c1+c2+c3 && j1+j2+j3<=21 || c1+c2+c3>21 ){
+                     System.out.println("Soma jogador:"+ (j1+j2+j3));
+                     System.out.println("Soma mesa:"+ (c1+c2+c3));
                     System.out.println("GANHOU!");
                     dinheiro= aposta*2 +(dinheiro-aposta);
                 }else{
+                    System.out.println("Soma jogador:"+ (j1+j2+j3));
+                     System.out.println("Soma mesa:"+ (c1+c2+c3));
                     System.out.println("PERDEU!");
                     dinheiro= dinheiro-aposta;
                 }
             }
         }while (dinheiro>0);
-
+        System.out.println();
+        System.out.println("Acabou o dinheiro");
     }
 }
