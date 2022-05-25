@@ -140,12 +140,14 @@ public class Blackjack
             }
             if(dinheiro-aposta>=0 && aposta>0){
                 System.out.printf("\f%n");
-                System.out.printf("COMPUTADOR%n");        
+                System.out.printf("Mesa%n");
+                
                 c1 = gerarCarta(r,c1,c2,c3);
 
                 System.out.printf("total(sem a segunda carta):%d%n",c1);
-
-                System.out.printf("HUMANO%n");
+                
+                System.out.println();
+                System.out.printf("Jogador%n");
                 System.out.printf("Dinheiro: %.2f%n",dinheiro-aposta);
 
                 j1 = gerarCarta(r,j1,j2,j3);
@@ -154,7 +156,7 @@ public class Blackjack
                 System.out.println("Total:"+(j1+j2));
                 j3=outracarta(j1,j2,j3,r);
                 System.out.println("-----------------------");
-                System.out.println("Computador:");
+                System.out.println("Mesa:");
 
                 c2 = gerarMesa(r);
                 mostrar(card,c2);
